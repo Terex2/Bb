@@ -43,7 +43,7 @@ REPLY_MESSAGE_BUTTONS = [
     ],
     [
         ("لو خيروك"),
-        ("حساب العمر")
+        ("اخفاء الازرار")
     ],    
  [
         
@@ -61,6 +61,11 @@ async def cpanel(_, message: Message):
               text=text,
               reply_markup=reply_markup
         )
+
+@app.on_message(filters.regex("اخفاء الازرار") & filters.group)
+async def down(client, message):
+          m = await message.reply("**- بخدمتك حجي خفيت الازرار\n- اذا تريد تطلعها مرة ثانية اكتب الاوامر**", reply_markup= ReplyKeyboardRemove(selective=True))
+
 
 @app.on_message(filters.regex("اضـف البـوت لمجموعـتك ✅") & filters.group)
 async def down(client, message):
